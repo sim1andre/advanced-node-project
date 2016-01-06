@@ -1,0 +1,17 @@
+@import
+'partials/reset',
+'partials/fonts',
+'partials/colors',
+'partials/functions',
+'partials/mixins',
+'partials/placeholders';
+
+body {
+  font-family: $primary-font, $fallback-font;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
