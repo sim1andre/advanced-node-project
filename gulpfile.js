@@ -5,20 +5,18 @@ var plugins = require('gulp-load-plugins')({ pattern: '*' });
 const gutil = require('gulp-util');
 const browserSync = require('browser-sync');
 const buffer = require('vinyl-buffer');
-const plumber = require('gulp-plumber');
 const scsslint = require('gulp-scss-lint');
 const browserify = require('browserify');
 const jshint = require('gulp-jshint');
 const source = require('vinyl-source-stream');
 const streamify = require('gulp-streamify');
-const uglify = require('gulp-uglify');
 const babelify = require('babelify');
 const del = require('del');
 const path = require('path');
 const fs = require('fs');
 
 
-var prod = true;
+var prod = false;
 var use_browserSync = true;
 var use_scss_lint = true;
 var use_js_hint = true;
