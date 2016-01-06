@@ -1,18 +1,12 @@
 'use strict'
 
 const gulp = require('gulp');
+var plugins = require('gulp-load-plugins')({ pattern: '*' });
+const gutil = require('gulp-util');
 const browserSync = require('browser-sync');
 const buffer = require('vinyl-buffer');
-const gutil = require('gulp-util');
-const gulpif = require('gulp-if');
-const sass = require('gulp-sass');
-const watch = require('gulp-watch');
-const cssmin = require('gulp-cssmin');
-const rename = require('gulp-rename');
 const plumber = require('gulp-plumber');
 const scsslint = require('gulp-scss-lint');
-const cssGlobbing = require('gulp-css-globbing');
-const autoprefixer = require('gulp-autoprefixer');
 const browserify = require('browserify');
 const jshint = require('gulp-jshint');
 const source = require('vinyl-source-stream');
@@ -24,7 +18,7 @@ const path = require('path');
 const fs = require('fs');
 
 
-var prod = false;
+var prod = true;
 var use_browserSync = true;
 var use_scss_lint = true;
 var use_js_hint = true;
@@ -40,11 +34,11 @@ var dest = {
 }
 
 
-'gulp.task('browser-sync', () => {
+gulp.task('browser-sync', () => {
 
   browserSync.init({
       proxy: {
-        target: 'localhost/basic-template/',
+        target: 'localhost/advanced-gulp-project/',
       },
       port: 4000,
       browser: ['chrome'],
@@ -57,8 +51,8 @@ var dest = {
      }
   });
 
-  watch( dest.js + '*.js').on("change", browserSync.reload);
-  watch('./**/*.{html,php,jade}').on("change", browserSync.reload);
+  plugins.watch( dest.js + '*.js').on("change", browserSync.reload);
+  plugins.watch('./**/*.{html,php,jade}').on("change", browserSync.reload);
 
 });
 
@@ -66,22 +60,22 @@ var dest = {
 
 gulp.task('styles', (cb) => {
 
-  watch(src.scss, (cb) => {
+  plugins.watch(src.scss, (cb) => {
     return gulp.src(src.scss)
-      .pipe(plumber({errorHandler: "Error: <%= error.message %>"}))
-      .pipe(cssGlobbing({
+      .pipe(plugins.plumber({errorHandler: "Error: <%= error.message %>"}))
+      .pipe(plugins.cssGlobbing({
         extensions: '.scss'
       }))
-      .pipe(gulpif(!prod && use_scss_lint , scsslint()))
-      .pipe(sass())
-      .pipe(autoprefixer({
+      .pipe(plugins.if(!prod && use_scss_lint , scsslint()))
+      .pipe(plugins.sass())
+      .pipe(plugins.autoprefixer({
         browsers: ['last 2 versions','> 5%'],
         cascade: false
       }))
-      .pipe(gulpif(prod, cssmin()))
-      .pipe(gulpif(prod, rename({ suffix: '.min'})))
+      .pipe(plugins.if(prod, plugins.cssmin()))
+      .pipe(plugins.if(prod, plugins.rename({ suffix: '.min'})))
       .pipe(gulp.dest(dest.css))
-      .pipe(gulpif(use_browserSync, browserSync.stream()));
+      .pipe(plugins.if(use_browserSync, browserSync.stream()));
   });
 
 });
@@ -89,7 +83,7 @@ gulp.task('styles', (cb) => {
 
 gulp.task('script', (cb) => {
 
-  watch(src.js, (cb) => {
+  plugins.watch(src.js, (cb) => {
 
     const bundler = browserify({
       cache: {},
@@ -109,10 +103,10 @@ gulp.task('script', (cb) => {
         )
       })
       .pipe(source('app.js'))
-      .pipe(gulpif(!prod  && use_js_hint, jshint()))
+      .pipe(plugins.if(!prod  && use_js_hint, jshint()))
       .pipe(buffer())
-      .pipe(gulpif( prod , uglify()))
-      .pipe(gulpif( prod , rename({ suffix: '.min' })))
+      .pipe(plugins.if( prod , plugins.uglify()))
+      .pipe(plugins.if( prod , plugins.rename({ suffix: '.min' })))
       .pipe(gulp.dest( dest.js ));
 
   });
@@ -128,7 +122,7 @@ var globals = [
 
 gulp.task('callback', (cb) => {
 
-  watch(globals, ['styles','script'])
+  plugins.watch(globals, ['styles','script'])
   .on('change', (file) => {
 
     let filename = path.basename(file);
@@ -160,4 +154,4 @@ gulp.task('prepare-prod', () => {
   ]);
 });
 
-gulp.task('default', gulpif(prod, ['prepare-prod','styles','script','browser-sync','callback'] ,['styles','script','browser-sync','callback']));
+gulp.task('default', plugins.if(prod, ['prepare-prod','styles','script','browser-sync','callback'] ,['styles','script','browser-sync','callback']));
