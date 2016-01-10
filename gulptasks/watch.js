@@ -13,7 +13,7 @@ const gutil = require('gulp-util');
 
 module.exports = function(gulp, plugins, src, dest, cb) {
 
-  plugins.watch(globals, ['styles','script','images','iconfonts'])
+  plugins.watch(globals, ['styles','script','images'])
 
   .on('change', (file) => {
 
@@ -34,7 +34,7 @@ module.exports = function(gulp, plugins, src, dest, cb) {
   .on('unlink', (file) => {
 
     let filename = path.basename(file);
-    
+
     gutil.log(gutil.colors.magenta('File deleted: ' + filename));
     plugins.browserSync.reload;
 

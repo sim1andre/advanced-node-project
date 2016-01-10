@@ -16,7 +16,7 @@ module.exports = function(gulp, plugins, src, dest) {
   });
 
   plugins.watch( dest.js + '*.js').on("change", plugins.browserSync.reload);
-  plugins.watch('./**/*.{html,php,jade,jsx}').on("change", plugins.browserSync.reload);
+  plugins.watch('./**/*.{html,php,jade}').on("change", plugins.browserSync.reload);
 
 
 }

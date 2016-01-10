@@ -7,5 +7,5 @@ const $w = $(window);
 
 
 $d.ready( () => {
-
+  
 });

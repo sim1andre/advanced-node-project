@@ -40,7 +40,7 @@ gulp.task('import-foundation', () => { require('./gulptasks/importFoundation')(g
 
 //SET TASKS TO RUN--------------------------------------------------------------
 
-var gulpTasks = {
+let gulpTasks = {
   'tasks': [
     { 'name':'browser-sync', 'run': use_browserSync },
     { 'name':'styles', 'run':true },

@@ -6,6 +6,7 @@ const jshint = require('gulp-jshint');
 const source = require('vinyl-source-stream');
 const streamify = require('gulp-streamify');
 const babelify = require('babelify');
+const gutil = require('gulp-util');
 
 module.exports = function(gulp, plugins, src, dest, cb, prod, js_hint) {
 
