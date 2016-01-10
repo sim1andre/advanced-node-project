@@ -32,6 +32,8 @@ gulp.task('iconfonts', (cb) => { require('./gulptasks/iconfont')(gulp, plugins, 
 
 gulp.task('watch', (cb) => { require('./gulptasks/watch')(gulp, plugins, src, dest, cb) });
 
+gulp.task('import-foundation', () => { require('./gulptasks/importFoundation')(gulp, plugins, dest)});
+
 
 //SET TASKS TO RUN--------------------------------------------------------------
 
