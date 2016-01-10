@@ -17,4 +17,4 @@
 1. Run this command `gulp import-foundation`.
 2. Add this snippet to app.scss
 
-`@import '../../vendor/foundation/scss/foundation';`
+`@import '../../src/vendor/foundation/scss/foundation';`
