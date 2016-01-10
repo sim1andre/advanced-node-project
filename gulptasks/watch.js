@@ -4,6 +4,7 @@
 var globals = [
   './src/scss/**/**',
   './src/js/**/**',
+  './**/*.{js,jsx}',
   './**/*.{html,php,jade}',
   './**/*.{png,jpeg,jpg,GIF,svg}'
 ];
