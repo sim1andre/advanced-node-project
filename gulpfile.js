@@ -6,13 +6,16 @@ var use_browserSync = true;
 var use_scss_lint = false;
 var use_js_hint = true;
 
+
 //LOAD PLUGINS------------------------------------------------------------------
 const gulp = require('gulp');
-var plugins = require('gulp-load-plugins')({ pattern: '*' });
+const plugins = require('gulp-load-plugins')({ pattern: '*' });
 const browserSync = require('browser-sync');
 
-//LOAD CREATE TASK MODULE------------------------------------------------------------------
+
+//LOAD CREATE TASK MODULE-------------------------------------------------------
 const createTaskArray = require('./gulptasks/createTask');
+
 
 //LOAD FILEPATHS----------------------------------------------------------------
 const src = require('./gulpsettings/sourcePaths');
@@ -28,7 +31,7 @@ gulp.task('script', (cb) => { require('./gulptasks/script')(gulp, plugins, src, 
 
 gulp.task('images', (cb) => { require('./gulptasks/images')(gulp, plugins, src, dest, cb) });
 
-gulp.task('iconfonts', (cb) => { require('./gulptasks/iconfont')(gulp, plugins, src, dest, cb) });
+gulp.task('iconfonts', (cb) => { require('./gulptasks/iconFont')(gulp, plugins, src, dest, cb) });
 
 gulp.task('watch', (cb) => { require('./gulptasks/watch')(gulp, plugins, src, dest, cb) });
 
