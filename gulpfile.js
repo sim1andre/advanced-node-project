@@ -23,17 +23,19 @@ const dest = require('./gulpsettings/destPaths');
 
 //TASKS-------------------------------------------------------------------------
 
-gulp.task('browser-sync', () => { require('./gulptasks/browserSync')(gulp, plugins, src, dest) });
+gulp.task('browser-sync', ['server'] , () => { require('./gulptasks/browserSync')(gulp, plugins, src, dest) });
 
 gulp.task('styles', (cb) => { require('./gulptasks/styles')(gulp, plugins, src, dest, cb, prod, use_scss_lint, use_browserSync) });
 
-gulp.task('script', (cb) => { require('./gulptasks/script')(gulp, plugins, src, dest, cb, prod, use_js_hint) });
+gulp.task('script', (cb) => { require('./gulptasks/script')(gulp, plugins, src, dest, cb, prod) });
 
 gulp.task('images', (cb) => { require('./gulptasks/images')(gulp, plugins, src, dest, cb) });
 
 gulp.task('iconfonts', (cb) => { require('./gulptasks/iconFont')(gulp, plugins, src, dest, cb) });
 
 gulp.task('watch', (cb) => { require('./gulptasks/watch')(gulp, plugins, src, dest, cb) });
+
+gulp.task('server', (cb) => { require('./gulptasks/startServer')(gulp, plugins,cb) });
 
 gulp.task('foundation', () => { require('./gulptasks/importFoundation')(gulp, plugins, dest)});
 
@@ -46,6 +48,7 @@ let gulpTasks = {
     { 'name':'styles', 'run':true },
     { 'name':'script', 'run':true },
     { 'name':'images', 'run':true },
+    { 'name':'server', 'run':true },
     { 'name':'watch', 'run':true }
   ]
 }

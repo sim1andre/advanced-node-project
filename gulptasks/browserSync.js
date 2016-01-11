@@ -1,9 +1,8 @@
-module.exports = function(gulp, plugins, src, dest) {
+module.exports = (gulp, plugins, src, dest) => {
 
   plugins.browserSync.init({
-      proxy: {
-        target: 'localhost/advanced-gulp-project/',
-      },
+      proxy: 'http://localhost:3000',
+      files: ['dest/**/*.*'],
       port: 4000,
       browser: ['chrome'],
       ghostMode: {
@@ -16,7 +15,7 @@ module.exports = function(gulp, plugins, src, dest) {
   });
 
   plugins.watch( dest.js + '*.js').on("change", plugins.browserSync.reload);
-  plugins.watch('./**/*.{html,php,jade}').on("change", plugins.browserSync.reload);
+  plugins.watch('./**/*.{html,jade}').on("change", plugins.browserSync.reload);
 
 
 }

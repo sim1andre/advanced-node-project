@@ -2,13 +2,12 @@
 
 const buffer = require('vinyl-buffer');
 const browserify = require('browserify');
-const jshint = require('gulp-jshint');
 const source = require('vinyl-source-stream');
 const streamify = require('gulp-streamify');
 const babelify = require('babelify');
 const gutil = require('gulp-util');
 
-module.exports = function(gulp, plugins, src, dest, cb, prod, js_hint) {
+module.exports = function(gulp, plugins, src, dest, cb, prod) {
 
   plugins.watch(src.js, (cb) => {
 
@@ -30,7 +29,6 @@ module.exports = function(gulp, plugins, src, dest, cb, prod, js_hint) {
         )
       })
       .pipe(source('app.js'))
-      .pipe(plugins.if(!prod  && js_hint, jshint()))
       .pipe(buffer())
       .pipe(plugins.if( prod , plugins.uglify()))
       .pipe(plugins.if( prod , plugins.rename({ suffix: '.min' })))

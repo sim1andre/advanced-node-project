@@ -1,12 +1,12 @@
 {
-  "name": "advanced-gulp-project",
+  "name": "advanced-node-project",
   "description": "",
   "main": "index.js",
   "authors": [
     "Sim1andre <simen@webfordeg.net>"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/sim1andre/advanced-gulp-project",
+  "homepage": "https://github.com/sim1andre/advanced-node-project",
   "moduleType": [],
   "private": true,
   "ignore": [
