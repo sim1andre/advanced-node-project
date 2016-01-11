@@ -1,6 +1,4 @@
 module.exports = function(gulp, plugins, dest) {
-
-  gulp.src( './node_modules/foundation-sites/**/*.*')
+  gulp.src( './bower_components/foundation/scss/**/*.*')
     .pipe(gulp.dest( dest.vendor + '/foundation/' ));
-    
 }

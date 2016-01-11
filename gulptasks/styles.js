@@ -11,7 +11,7 @@ module.exports = function(gulp, plugins, src, dest, cb, prod, use_scss_lint, use
       .pipe(plugins.if(use_scss_lint , scsslint()))
       .pipe(plugins.sass())
       .pipe(plugins.autoprefixer({
-        browsers: ['last 2 versions','> 5%'],
+        browsers: ['last 2 versions','ie >= 9', 'and_chr >= 2.3'],
         cascade: false
       }))
       .pipe(plugins.if(prod, plugins.cssmin()))

@@ -14,7 +14,13 @@
 
 <br/>
 
-1. Run this command `gulp import-foundation`.
-2. Add this snippet to app.scss
+1. Run `bower install`
+2. Run `gulp foundation` to import folders into vendor.
 
-`@import '../../src/vendor/foundation/scss/foundation';`
+Uncomment this snippet in app.scss
+
+```
+@import
+'../vendor/foundation/scss/foundation',
+'../vendor/foundation/scss/normalize';
+```

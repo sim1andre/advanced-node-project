@@ -1,0 +1,22 @@
+{
+  "name": "advanced-gulp-project",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Sim1andre <simen@webfordeg.net>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/sim1andre/advanced-gulp-project",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "foundation": "~5.5.3"
+  }
+}
