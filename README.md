@@ -1,4 +1,4 @@
-#Advanced Gulp Project
+#Advanced Gulp Project (Node Version)
 
 ##install
 
@@ -24,3 +24,4 @@ Uncomment this snippet in app.scss
 '../vendor/foundation/scss/foundation',
 '../vendor/foundation/scss/normalize';
 ```
+# advanced-node-project 
