@@ -1,13 +1,12 @@
 'use strict'
 
-let express = require('express');
-let path = require('path');
-let join = require('path').join;
-let bodyParser = require('body-parser');
-let app = express();
-let routes = require('./routes/routes');
+import express from 'express';
+import path, {join} from 'path';
+import bodyParser from 'body-parser';
+import routes from './routes/routes';
 
-let port = process.env.PORT || 3000;
+const app = express();
+const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.static(path.join(__dirname + '/public')));
@@ -20,7 +19,5 @@ app.set('view engine', 'jade');
 routes(app);
 
 app.listen(port, () => {
-  console.log('Running at port ' + port);
+  console.log(`Running at port ${port}`);
 });
-
-module.exports = app;

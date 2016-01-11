@@ -1,11 +1,11 @@
 'use strict'
 
-const $ = require('jquery');
+import $ from 'jquery';
 
 const $d = $(document);
 const $w = $(window);
 
 
 $d.ready( () => {
-  
+
 });
