@@ -1,0 +1,10 @@
+extends ./layout.jade
+
+block title
+  title Login
+
+block content
+  form(method="post", action="/login")
+    input(type='text', name="username", placeholder="Brukernavn")
+    input(type="password", name="password", placeholder="Passord")
+    input(type="submit", value="Logg inn")
